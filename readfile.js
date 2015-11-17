@@ -2,11 +2,11 @@ var http = require('http');
 var fs = require('fs');
 
 http.createServer(function (request, response) {
-	response.writeHead(200);
+	response.writeHead(200, {
+		'Content-Type': 'text/html'
+	});
 	fs.readFile('index.html', function (error, content) {
-		response.write(content, {
-			'Content-Type': 'text/html'
-		});
+		response.write(content);
 		response.end();
 	});
 }).listen(9527);
